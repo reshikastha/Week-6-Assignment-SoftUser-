@@ -9,10 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.reshika.softusersoftwarica.Model.Student
 import com.reshika.softusersoftwarica.R
 
-class StudentListAdapter(val context: Context, val lstStudent: ArrayList<Student>) :
+class StudentListAdapter(
+        val context: Context,
+        val lstStudent: ArrayList<Student>) :
     RecyclerView.Adapter<StudentListAdapter.StudentViewHolder>() {
 
 
@@ -31,28 +34,31 @@ class StudentListAdapter(val context: Context, val lstStudent: ArrayList<Student
         holder.tvAddress.text = student.studentAddress.toString();
         holder.tvGender.text = student.studentGender.toString();
 
-        when (student.studentGender) {
-            "Male" -> {
-                genderImg = R.drawable.man
-            }
-            "Female" -> {
-                genderImg = R.drawable.woman;
-            }
-            "Other" -> {
-                genderImg = R.drawable.other;
-            }
-            //        Glide.with(context).load(student.profileImage).into(holder.imgProfile);
-        }
+//        when (student.studentGender) {
+//            "Male" -> {
+//                genderImg = R.drawable.man
+//            }
+//            "Female" -> {
+//                genderImg = R.drawable.woman;
+//            }
+//            "Other" -> {
+//                genderImg = R.drawable.other;
+//            }
+//            //        Glide.with(context).load(student.profileImage).into(holder.imgProfile);
+//        }
 
-        holder.imgProfile.setImageResource(genderImg);
+//        holder.imgProfile.setImageResource(genderImg);
+        Glide.with(this.context)
+                .load(student.imagelink)
+                .into(holder.imgProfile)
 //        Glide.with(context).load(student.profileImage).into(holder.imgProfile);
 
-        holder.imgProfile.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-
-                Toast.makeText(context, "Hello I'm ${student.fullName}", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.imgProfile.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View?) {
+//
+//                Toast.makeText(context, "Hello I'm ${student.fullName}", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         holder.btnDelete.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {

@@ -8,9 +8,11 @@ data class Student (
     var fullName: String?,
     val studentAge: String?,
     var studentAddress:String?,
-    val studentGender:String?
+    val studentGender:String?,
+    val imagelink:String?
 ):ViewModel(), Parcelable{
     constructor(parcel: Parcel): this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -21,6 +23,7 @@ data class Student (
         parcel.writeString(studentAge)
         parcel.writeString(studentAddress)
         parcel.writeString(studentGender)
+        parcel.writeString(imagelink)
     }
 
     override fun describeContents(): Int {

@@ -21,7 +21,10 @@ class Student_Fragment : Fragment() {
     private lateinit var rdoMale: RadioButton;
     private lateinit var rdoFemale: RadioButton;
     private lateinit var rdoOther: RadioButton;
+    private lateinit var imageLink:EditText
+
     private lateinit var btnSave: Button;
+
 
 
     var gender: String ="";
@@ -48,6 +51,7 @@ class Student_Fragment : Fragment() {
                 } else if (!rdoMale.isChecked && !rdoFemale.isChecked && !rdoOther.isChecked) {
                     Toast.makeText(context, "Please Select Gender", Toast.LENGTH_SHORT).show();
                 } else {
+                    val imageLink = imageLink.text.toString()
                     val fullname = etFullname.text.toString();
                     val address = etAddress.text.toString();
                     val age = etAge.text.toString();
@@ -69,7 +73,7 @@ class Student_Fragment : Fragment() {
 
                     }
 
-                    DashboardActivity.lisfOfStudent.add(Student(fullname,age,address,gender))
+                    DashboardActivity.lisfOfStudent.add(Student(fullname,age,address,gender,imageLink))
                     Toast.makeText(
                         context,
                         "Student Added Successfully",
@@ -83,7 +87,7 @@ class Student_Fragment : Fragment() {
 
         return view;
     }
-    public fun BindView(view: View){
+     fun BindView(view: View){
         etFullname = view.findViewById(R.id.etFullname);
         etAddress = view.findViewById(R.id.etAddress);
         etAge = view.findViewById(R.id.etAge);
@@ -91,6 +95,7 @@ class Student_Fragment : Fragment() {
         rdoMale = view.findViewById(R.id.rdoMale);
         rdoFemale = view.findViewById(R.id.rdoFemale);
         rdoOther = view.findViewById(R.id.rdoOther);
+        imageLink = view.findViewById(R.id.imageLink)
         btnSave = view.findViewById(R.id.btnSave);
 
 
@@ -104,6 +109,7 @@ class Student_Fragment : Fragment() {
         rdoMale.isChecked = false;
         rdoFemale.isChecked = false;
         rdoOther.isChecked = false;
+        imageLink.setText("")
 
     }
 

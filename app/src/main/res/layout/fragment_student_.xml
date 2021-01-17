@@ -80,6 +80,13 @@
             android:hint="Address"
             android:inputType="text"
             android:nextFocusForward="@id/btnSave" />
+        <EditText
+            android:id="@+id/imageLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Image Link"
+            android:inputType="text"
+            android:nextFocusForward="@id/btnSave" />
 
         <Button
             android:id="@+id/btnSave"
